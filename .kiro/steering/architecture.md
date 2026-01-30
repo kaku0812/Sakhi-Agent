@@ -19,7 +19,7 @@ Build a modular, scalable women's safety ecosystem that prioritizes real-world i
 
 ### Data Flow Architecture
 ```
-Android App → Local Storage → Cloud Sync → MCP Server → Kiro Agent → Emergency Response
+Android App → PgSQL → Cloud Sync → MCP Server → Kiro Agent → Emergency Response
 ```
 
 ## Integration Patterns

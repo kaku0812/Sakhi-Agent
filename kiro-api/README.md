@@ -19,7 +19,7 @@ Simple endpoint server for triggering Kiro agent to book emergency Uber rides.
 1. Fork this repo
 2. Go to [render.com](https://render.com)
 3. Create new Web Service → Connect GitHub
-4. Select this repo
+4. Select this repo containing server.js
 5. Done! You'll get a URL like `https://your-app.onrender.com`
 
 ## Local Testing

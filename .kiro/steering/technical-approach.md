@@ -70,7 +70,7 @@
 ### Challenge: Real-Time Data Synchronization
 - **Problem**: Maintaining location data sync with intermittent connectivity
 - **Solution**: Designed offline-first architecture with smart sync
-- **Implementation**: Local SQLite storage with background sync service and eventually moved to deploying on Render using PostgreSQL
+- **Implementation**: FastAPI PostgreSQL storage with background sync service and eventually moved to deploying on Render using PostgreSQL
 
 ## Innovation Highlights
 
@@ -81,21 +81,20 @@
 - **Multi-MCP Orchestration**: Coordinated 5 different services (weather, news, telegram, location, playwright)
 
 ### Production-Ready Architecture
-- **PyPI Distribution**: Published `hackathon-sakhi` package for easy judge setup
+- **PyPI Distribution**: Published `hackathon-sakhi` package for easy setup
 - **Cross-Platform Compatibility**: Works on Windows, Mac, and Linux without modification
 - **Professional UI**: Corporate-style HTML reports with source attribution
 - **Scalable Design**: Modular components for easy extension and maintenance
 
 ### Real-World Technical Innovation
 - **Offline-First Mobile App**: Works without internet when most needed (emergencies)
-- **Smart Sync Architecture**: Local SQLite storage with intelligent cloud synchronization
+- **Smart Sync Architecture**: Render's PostgreSQL with intelligent cloud synchronization
 - **Event-Driven Automation**: Responds to mobile app triggers for emergency scenarios
 - **Multi-Source Intelligence**: Combines weather, news, location, and communication data
 
 ### Hackathon-Specific Achievements
 - **Learning Velocity**: Mastered Android development from zero in 3 days using AI assistance
 - **Time Efficiency**: 90-hour development cycle for full-stack solution
-- **Judge Experience**: Comprehensive documentation and easy setup process
 - **Technical Depth**: 3,800+ lines Python, 1,400+ lines Kotlin, professional architecture
 
 ## Lessons Learned
