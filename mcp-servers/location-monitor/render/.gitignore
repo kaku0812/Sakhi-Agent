@@ -1,0 +1,12 @@
+# Local database (for testing)
+*.db
+*.sqlite
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+
+# IDE
+.vscode/
+.idea/

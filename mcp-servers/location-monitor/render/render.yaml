@@ -1,0 +1,26 @@
+# Render Blueprint for Sakhi Location Monitor
+# This file auto-configures the deployment
+
+services:
+  # FastAPI Web Service
+  - type: web
+    name: sakhi-location-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: oregon  # US West - change if needed
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sakhi-location-db
+          property: connectionString
+
+databases:
+  # PostgreSQL Database
+  - name: sakhi-location-db
+    databaseName: sakhi_location
+    user: sakhi_user
+    region: oregon  # Same region as web service
+    plan: free

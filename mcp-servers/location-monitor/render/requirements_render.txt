@@ -1,0 +1,19 @@
+# Requirements for Render deployment
+# This is separate from the original requirements.txt
+
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# Async database support
+databases[postgresql]>=0.8.0
+
+# PostgreSQL driver
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.9
+
+# SQLAlchemy for ORM
+sqlalchemy>=2.0.0
+
+# For local SQLite testing (optional)
+aiosqlite>=0.19.0
