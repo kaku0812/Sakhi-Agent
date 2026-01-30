@@ -9,7 +9,7 @@ An AI-powered safety ecosystem that provides proactive monitoring, real-time loc
 ### Setup
 1. Install Kiro CLI
 2. Copy custom prompts & agents from `.kiro/` to `~/.kiro/`
-3. Install dependencies as per [JUDGES_QUICK_START.md](JUDGES_QUICK_START.md)
+3. Install dependencies as per [QUICKSTART.md](QUICKSTART.md)
 4. Verify all MCP servers load in Kiro
 
 ### Flow 1: Trip Planning & Proactive Alerts
