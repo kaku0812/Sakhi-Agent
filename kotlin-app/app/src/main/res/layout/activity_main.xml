@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_dark"
+    android:padding="32dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="64dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SafeGuard"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-light"
+            android:letterSpacing="0.1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Personal Safety Monitor"
+            android:textColor="#B0B0B0"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-light" />
+
+    </LinearLayout>
+
+    <!-- Status Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/card_dark"
+        android:padding="24dp"
+        android:layout_marginBottom="48dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textColor="#E0E0E0"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="● Inactive"
+            android:textColor="#FF6B6B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Action Buttons -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Start Protection"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_primary"
+        android:layout_marginBottom="16dp"
+        android:onClick="startTracking" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Stop Protection"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_secondary"
+        android:onClick="stopTracking" />
+
+    <!-- SOS Emergency Button -->
+    <Button
+        android:id="@+id/sos_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:text="🚨 SOS - Book Emergency Ride"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@drawable/button_sos"
+        android:onClick="onSosButtonClick" />
+
+    <!-- Spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Features -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Features"
+            android:textColor="#B0B0B0"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/dot_white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location Tracking"
+                android:textColor="#E0E0E0"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/dot_white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Battery Monitoring"
+                android:textColor="#E0E0E0"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/dot_white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emergency Alerts"
+                android:textColor="#E0E0E0"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

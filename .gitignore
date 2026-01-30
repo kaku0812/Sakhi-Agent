@@ -1,0 +1,35 @@
+# Python virtual environment
+mcp_env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment files with secrets
+.env
+
+# Node
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Trip data (user-specific)
+trips.json
+
+

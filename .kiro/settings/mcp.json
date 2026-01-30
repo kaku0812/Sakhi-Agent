@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "sakhi-weather": {
+      "command": "uvx",
+      "args": ["--from", "hackathon-sakhi", "sakhi-weather"],
+      "env": {
+        "OPENWEATHER_API_KEY": "YOUR_OPENWEATHER_API_KEY",
+        "LOG_LEVEL": "ERROR"
+      }
+    },
+    "sakhi-news": {
+      "command": "uvx",
+      "args": ["--from", "hackathon-sakhi", "sakhi-news"],
+      "env": {
+        "LOG_LEVEL": "ERROR"
+      }
+    },
+    "sakhi-telegram": {
+      "command": "uvx",
+      "args": ["--from", "hackathon-sakhi", "sakhi-telegram"],
+      "env": {
+        "TELEGRAM_BOT_TOKEN": "YOUR_TELEGRAM_BOT_TOKEN",
+        "TELEGRAM_CHAT_ID": "YOUR_TELEGRAM_CHAT_ID",
+        "LOG_LEVEL": "ERROR"
+      }
+    },
+    "sakhi-location": {
+      "command": "uvx",
+      "args": ["--from", "hackathon-sakhi", "sakhi-location"],
+      "env": {
+        "FASTAPI_BASE_URL": "https://sakhi-location-api.onrender.com",
+        "LOG_LEVEL": "ERROR"
+      }
+    }
+  }
+}

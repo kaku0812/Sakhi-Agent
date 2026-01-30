@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKHI - Architecture Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 50%, #2a2a2a 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid #444;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            text-align: center;
+            color: #cccccc;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .mcp-servers {
+            text-align: center;
+            background: linear-gradient(135deg, #333 0%, #444 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px solid #555;
+        }
+        .mcp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .mcp-item {
+            background: linear-gradient(135deg, #4a4a4a 0%, #5a5a5a 100%);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #666;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .mcp-item h4 {
+            color: #ffffff;
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+        }
+        .mcp-item p {
+            color: #cccccc;
+            margin: 0;
+            font-size: 0.9em;
+        }
+        .diagram-container {
+            background: linear-gradient(135deg, #333 0%, #444 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid #555;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .mermaid {
+            text-align: center;
+        }
+        .flow-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 2em;
+            margin: 40px 0 20px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ SAKHI</h1>
+        <p class="subtitle">Women's Safety Guardian - AI-Powered Trip Monitoring System</p>
+
+        <div class="mcp-servers">
+            <h3 style="color: #ffffff; margin-bottom: 15px;">🔧 Custom MCP Servers</h3>
+            <div class="mcp-grid">
+                <div class="mcp-item">
+                    <h4>🌤️ sakhi-weather</h4>
+                    <p>Weather & clothing recommendations</p>
+                </div>
+                <div class="mcp-item">
+                    <h4>📰 sakhi-news</h4>
+                    <p>Safety news from 15+ RSS sources</p>
+                </div>
+                <div class="mcp-item">
+                    <h4>📱 sakhi-telegram</h4>
+                    <p>Emergency alert distribution</p>
+                </div>
+                <div class="mcp-item">
+                    <h4>🌐 playwright</h4>
+                    <p>Google Maps review scraping</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-title">📋 User Journey Flow</div>
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart TD
+                    USER["👤 User Types"] --> PROMPT["@women-safety-trip-planner"]
+                    PROMPT --> INPUT["📝 Enter Trip Details<br/>Source to Destination<br/>Date and Time"]
+                    INPUT --> SAVE["💾 Save to trips.json"]
+                    
+                    SAVE --> WAIT["⏳ Wait for Reminder Time<br/>4 hours before trip"]
+                    
+                    SCHEDULER["⏰ scheduler.py<br/>Runs every 30 minutes"] --> CHECK{"Check trips.json"}
+                    CHECK -->|Trip Found| INVOKE["🤖 Invoke Agent<br/>women-safety-guardian"]
+                    
+                    INVOKE --> GATHER["🔍 Gather Intelligence"]
+                    GATHER --> WEATHER["🌤️ Get Weather Data"]
+                    GATHER --> NEWS["📰 Get Safety News"]
+                    GATHER --> MAPS["🗺️ Scrape Google Maps"]
+                    
+                    WEATHER --> ANALYZE["🧠 AI Analysis<br/>Claude Sonnet 4"]
+                    NEWS --> ANALYZE
+                    MAPS --> ANALYZE
+                    
+                    ANALYZE --> REPORT["📄 Generate HTML Report"]
+                    ANALYZE --> ALERT["📱 Send Telegram Alert"]
+                    
+                    REPORT --> COMPLETE["✅ Mark Complete<br/>reminder_sent = true"]
+                    ALERT --> COMPLETE
+                    
+                    style USER fill:#4a90e2,stroke:#fff,stroke-width:2px,color:#fff
+                    style PROMPT fill:#7b68ee,stroke:#fff,stroke-width:2px,color:#fff
+                    style SAVE fill:#50c878,stroke:#fff,stroke-width:2px,color:#fff
+                    style SCHEDULER fill:#ff6b6b,stroke:#fff,stroke-width:2px,color:#fff
+                    style INVOKE fill:#ffa500,stroke:#fff,stroke-width:2px,color:#fff
+                    style ANALYZE fill:#9370db,stroke:#fff,stroke-width:2px,color:#fff
+                    style ALERT fill:#ff69b4,stroke:#fff,stroke-width:2px,color:#fff
+                    style COMPLETE fill:#32cd32,stroke:#fff,stroke-width:2px,color:#fff
+            </div>
+        </div>
+
+        <div class="flow-title">🏗️ System Architecture</div>
+        <div class="diagram-container">
+            <div class="mermaid">
+                graph TB
+                    subgraph UI ["User Interface"]
+                        KIRO["🤖 Kiro CLI"]
+                        PROMPT_UI["@women-safety-trip-planner"]
+                    end
+                    
+                    subgraph DATA ["Data Layer"]
+                        TRIPS["📋 trips.json"]
+                        REPORTS["📄 HTML Reports"]
+                    end
+                    
+                    subgraph AUTO ["Automation"]
+                        SCHEDULER_SYS["⏰ scheduler.py<br/>Cross-Platform Daemon"]
+                    end
+                    
+                    subgraph AGENT_SYS ["AI Agent"]
+                        AGENT["🛡️ women-safety-guardian<br/>Claude Sonnet 4"]
+                    end
+                    
+                    subgraph MCP ["Intelligence Sources"]
+                        MCP1["🌤️ Weather MCP"]
+                        MCP2["📰 News MCP"]
+                        MCP3["📱 Telegram MCP"]
+                        MCP4["🌐 Playwright MCP"]
+                    end
+                    
+                    subgraph EXT ["External APIs"]
+                        WEATHER_API["🌤️ OpenWeather"]
+                        NEWS_API["📰 RSS Feeds"]
+                        TELEGRAM_API["📱 Telegram Bot"]
+                        MAPS_API["🗺️ Google Maps"]
+                    end
+                    
+                    KIRO --> PROMPT_UI
+                    PROMPT_UI --> TRIPS
+                    SCHEDULER_SYS --> TRIPS
+                    SCHEDULER_SYS --> AGENT
+                    AGENT --> MCP1
+                    AGENT --> MCP2
+                    AGENT --> MCP3
+                    AGENT --> MCP4
+                    AGENT --> REPORTS
+                    
+                    MCP1 --> WEATHER_API
+                    MCP2 --> NEWS_API
+                    MCP3 --> TELEGRAM_API
+                    MCP4 --> MAPS_API
+                    
+                    style KIRO fill:#4a90e2,stroke:#fff,stroke-width:2px,color:#fff
+                    style AGENT fill:#9370db,stroke:#fff,stroke-width:2px,color:#fff
+                    style SCHEDULER_SYS fill:#ff6b6b,stroke:#fff,stroke-width:2px,color:#fff
+                    style TRIPS fill:#50c878,stroke:#fff,stroke-width:2px,color:#fff
+                    style MCP1 fill:#ffa500,stroke:#fff,stroke-width:2px,color:#fff
+                    style MCP2 fill:#ff69b4,stroke:#fff,stroke-width:2px,color:#fff
+                    style MCP3 fill:#32cd32,stroke:#fff,stroke-width:2px,color:#fff
+                    style MCP4 fill:#7b68ee,stroke:#fff,stroke-width:2px,color:#fff
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            themeVariables: {
+                primaryColor: '#4a90e2',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#ffffff',
+                lineColor: '#ffffff',
+                sectionBkgColor: '#333333',
+                altSectionBkgColor: '#444444',
+                gridColor: '#555555',
+                secondaryColor: '#7b68ee',
+                tertiaryColor: '#50c878'
+            }
+        });
+    </script>
+</body>
+</html>

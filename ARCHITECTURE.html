@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakhi - Architecture Diagrams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+        .diagram-section {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .diagram-section h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .box {
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 120px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .box-primary {
+            background: #333;
+            color: #fff;
+        }
+        .box-dashed {
+            border-style: dashed;
+        }
+        .arrow {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+        .arrow-down {
+            transform: rotate(90deg);
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        /* System Architecture Grid */
+        .system-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .kiro-container {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .kiro-label {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .mcp-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .mcp-box {
+            background: #333;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .external-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .external-box {
+            border: 1px solid #999;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #666;
+        }
+        .connector {
+            text-align: center;
+            color: #333;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        /* Vertical Flow */
+        .vertical-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .horizontal-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .branch-connector {
+            width: 2px;
+            height: 20px;
+            background: #333;
+        }
+        .split-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 10px;
+        }
+        
+        /* Note */
+        .note {
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #999;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sakhi Architecture</h1>
+        <p class="subtitle">Women's Safety Monitoring System</p>
+
+        <!-- System Architecture -->
+        <div class="diagram-section">
+            <h2>1. System Architecture</h2>
+            <div class="system-grid">
+                <div class="kiro-container">
+                    <div class="kiro-label">KIRO CLI</div>
+                    <div class="mcp-row">
+                        <div class="mcp-box">Weather MCP</div>
+                        <div class="mcp-box">News MCP</div>
+                        <div class="mcp-box">Telegram MCP</div>
+                        <div class="mcp-box">Location MCP</div>
+                    </div>
+                </div>
+                <div class="connector">▼</div>
+                <div class="external-row">
+                    <div class="external-box">OpenWeather API</div>
+                    <div class="external-box">RSS Feeds (15+)</div>
+                    <div class="external-box">Telegram Bot API</div>
+                    <div class="external-box">Render FastAPI</div>
+                </div>
+                <div class="connector">▲</div>
+                <div style="text-align: center;">
+                    <div class="box">Android App (Kotlin)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trip Planning Flow -->
+        <div class="diagram-section">
+            <h2>2. Trip Planning Flow</h2>
+            <div class="vertical-flow">
+                <div class="flow">
+                    <div class="box">User Input</div>
+                    <span class="arrow">→</span>
+                    <div class="box box-primary">Trip Planner Prompt</div>
+                    <span class="arrow">→</span>
+                    <div class="box">trips.json</div>
+                </div>
+                <div class="connector">▼</div>
+                <div class="flow">
+                    <div class="box box-dashed">scheduler.py</div>
+                    <span class="arrow">→</span>
+                    <div class="box box-primary">Guardian Agent</div>
+                    <span class="arrow">→</span>
+                    <div class="box">Telegram Alert</div>
+                </div>
+                <p class="note">Scheduler checks every 30 mins • Triggers 4 hours before departure</p>
+            </div>
+        </div>
+
+        <!-- Emergency SOS Flow -->
+        <div class="diagram-section">
+            <h2>3. Emergency SOS Flow</h2>
+            <div class="vertical-flow">
+                <div class="flow">
+                    <div class="box">SOS Button (Android)</div>
+                    <span class="arrow">→</span>
+                    <div class="box">Render API</div>
+                    <span class="arrow">→</span>
+                    <div class="box box-dashed">sos_scheduler.py</div>
+                </div>
+                <div class="connector">▼ beep</div>
+                <div class="box box-primary">Uber Emergency Agent</div>
+                <div class="connector">▼</div>
+                <div class="split-row">
+                    <div class="box">Uber Deep Link</div>
+                    <div class="box">Telegram Notification</div>
+                </div>
+                <p class="note">Scheduler polls every 5 seconds • Auto-books ride to safe location</p>
+            </div>
+        </div>
+
+        <!-- Location Monitoring Flow -->
+        <div class="diagram-section">
+            <h2>4. Location Monitoring Flow</h2>
+            <div class="vertical-flow">
+                <div class="flow">
+                    <div class="box">Android App</div>
+                    <span class="arrow">→</span>
+                    <div class="box">Local SQLite</div>
+                    <span class="arrow">→</span>
+                    <div class="box">Render API</div>
+                    <span class="arrow">→</span>
+                    <div class="box box-primary">Location MCP</div>
+                </div>
+                <div class="connector">▼</div>
+                <div class="box" style="background: #f5f5f5;">
+                    Kiro CLI Query<br>
+                    <span style="font-size: 0.75rem; color: #666;">"Where is she right now?"</span>
+                </div>
+                <p class="note">Works offline • Syncs when network available • Timestamps in UTC</p>
+            </div>
+        </div>
+
+        <footer>
+            Sakhi - Built for Kiro Hackathon
+        </footer>
+    </div>
+</body>
+</html>
